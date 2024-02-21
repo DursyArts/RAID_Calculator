@@ -1,0 +1,14 @@
+C:\Users\Leona\Documents\Projects\RAID_Calculator\bin\Debug\net6.0\RAID_Calculator.exe
+C:\Users\Leona\Documents\Projects\RAID_Calculator\bin\Debug\net6.0\RAID_Calculator.deps.json
+C:\Users\Leona\Documents\Projects\RAID_Calculator\bin\Debug\net6.0\RAID_Calculator.runtimeconfig.json
+C:\Users\Leona\Documents\Projects\RAID_Calculator\bin\Debug\net6.0\RAID_Calculator.dll
+C:\Users\Leona\Documents\Projects\RAID_Calculator\bin\Debug\net6.0\RAID_Calculator.pdb
+C:\Users\Leona\Documents\Projects\RAID_Calculator\obj\Debug\net6.0\RAID_Calculator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Leona\Documents\Projects\RAID_Calculator\obj\Debug\net6.0\RAID_Calculator.AssemblyInfoInputs.cache
+C:\Users\Leona\Documents\Projects\RAID_Calculator\obj\Debug\net6.0\RAID_Calculator.AssemblyInfo.cs
+C:\Users\Leona\Documents\Projects\RAID_Calculator\obj\Debug\net6.0\RAID_Calculator.csproj.CoreCompileInputs.cache
+C:\Users\Leona\Documents\Projects\RAID_Calculator\obj\Debug\net6.0\RAID_Calculator.dll
+C:\Users\Leona\Documents\Projects\RAID_Calculator\obj\Debug\net6.0\refint\RAID_Calculator.dll
+C:\Users\Leona\Documents\Projects\RAID_Calculator\obj\Debug\net6.0\RAID_Calculator.pdb
+C:\Users\Leona\Documents\Projects\RAID_Calculator\obj\Debug\net6.0\RAID_Calculator.genruntimeconfig.cache
+C:\Users\Leona\Documents\Projects\RAID_Calculator\obj\Debug\net6.0\ref\RAID_Calculator.dll
