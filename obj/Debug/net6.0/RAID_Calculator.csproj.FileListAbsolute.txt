@@ -12,3 +12,4 @@ C:\Users\Leona\Documents\Projects\RAID_Calculator\obj\Debug\net6.0\refint\RAID_C
 C:\Users\Leona\Documents\Projects\RAID_Calculator\obj\Debug\net6.0\RAID_Calculator.pdb
 C:\Users\Leona\Documents\Projects\RAID_Calculator\obj\Debug\net6.0\RAID_Calculator.genruntimeconfig.cache
 C:\Users\Leona\Documents\Projects\RAID_Calculator\obj\Debug\net6.0\ref\RAID_Calculator.dll
+C:\Users\Leona\Documents\Projects\RAID_Calculator\obj\Debug\net6.0\RAID_Calculator.sourcelink.json

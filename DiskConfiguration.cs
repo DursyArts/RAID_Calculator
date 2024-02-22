@@ -1,8 +1,97 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 
 namespace RAID_Calculator;
 
-public class DiskConfiguration
-{
-    
+public class DiskConfiguration{
+    private List<Disk> RaidDiskIDs = new List<Disk>();
+    private string RaidLevel = "JBOD";
+    private double RaidHealth = 100;
+
+    protected double RaidUsableCapacity;
+
+    protected double RaidTotalCapacity;
+
+    protected double RaidMiscCapacity;
+
+    public List<Disk> getRaidDiskIDs(){
+        return this.RaidDiskIDs;
+    }
+
+    public string getRaidLevel(){
+        return this.RaidLevel;
+    }
+
+    public double getRaidHealth(){
+        return this.RaidHealth;
+    }
+
+    public void setDiskID(int index, string id){
+        // see if index exists in List<Disk> RaidDiskIDs
+        // replace or append to the List<Disk> RaidDiskIDs List at index
+        // cout if the action succeeded 
+    }
+
+    public void setRaidLevel(String level){
+        // call the DiskConfigurations RAID Level Check function with the String level var
+        // If the function returns true then apply to the raid level var and update RaidHealth
+    }
+
+    public void setRaidHealth(double health){
+        this.RaidHealth = health;
+        this.getRaidHealth();
+    }
+
+    public void ResetRaidHealth(){
+        // Call this function after updating the raid level.
+        // fetch all disks in current state
+        // use some logic to evaluate the overall health of the raid using the individual information stored in each disk's health variable
+        // set RaidHealth
+        // call getRaidHealth()
+    }
+
+    public void addRaidDisk(double capacity){
+        System.Console.WriteLine("Received call to add new disk with size: {0} of type: {1}" ,capacity ,capacity.GetType());
+        Disk temp = new Disk();
+        temp.setCapacity(capacity);
+        temp.setID("DISK" + (this.getRaidDiskIDs().Count+1).ToString());
+        // Health is set automatically. We assume the Disk is okay after being sold.
+        try{
+            //System.Console.WriteLine("Trying to add disk {0} to Array", temp.getDiskID());
+            RaidDiskIDs.Add(temp);
+        }catch(Exception ex){
+            System.Console.WriteLine("Error adding the disk to the array:");
+            System.Console.WriteLine(ex.Message);
+        }finally{
+            // call this.applyRaidConfig()
+            this.applyRaidConfig(this.RaidLevel);
+        }
+    }
+
+    public void applyRaidConfig(string level){
+        // The default fallback if the check fails is a plain jbod
+        switch(level){
+            case "JBOD":
+                //System.Console.WriteLine("Applaying JBOD Configuration to your Disk array.");
+                int count = RaidDiskIDs.Count;
+                double tempsize = 0.00;
+                //System.Console.WriteLine("Disks in the Array: {0}", count);
+                foreach(Disk tmpdisk in RaidDiskIDs){
+                    //System.Console.WriteLine("disk capacity to add: {0}" ,tmpdisk.getCapacity());
+                    tempsize = tempsize + tmpdisk.getCapacity();
+                    
+                    //System.Console.WriteLine("Total Size now: {0}", tempsize);
+                    if(tmpdisk.getDiskHealth() == true){
+                        this.setRaidHealth(100.00); 
+                    }
+                }
+                this.RaidTotalCapacity = tempsize;
+                System.Console.WriteLine("JBOD Capacity: {0}GB",this.RaidTotalCapacity);
+                
+            break;
+        }
+        //System.Console.WriteLine(this.getRaidLevel());
+    }
 }
