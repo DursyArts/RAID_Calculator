@@ -14,8 +14,13 @@ namespace RAID_Calculator{
             System.Console.WriteLine("Creating another Disk~");
             diskConfiguration.addRaidDisk(capacity2);
 
+            System.Console.WriteLine("Creating another Disk~");
+            diskConfiguration.addRaidDisk(2500.00);
+
             System.Console.WriteLine("Getting The Raid Disks~");
             diskConfiguration.getRaidDiskIDs();
+            System.Console.WriteLine("Raid Health Status: {0}", diskConfiguration.getRaidHealth());
+            System.Console.WriteLine("Raid Level: {0}", diskConfiguration.getRaidLevel());
         }
     }
 }
