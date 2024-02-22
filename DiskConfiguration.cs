@@ -8,7 +8,7 @@ namespace RAID_Calculator;
 public class DiskConfiguration{
     private List<Disk> RaidDiskIDs = new List<Disk>();
     private string RaidLevel = "JBOD";
-    private double RaidHealth = 100;
+    private double RaidHealth = 100.00;
 
     protected double RaidUsableCapacity;
 
@@ -17,31 +17,40 @@ public class DiskConfiguration{
     protected double RaidMiscCapacity;
 
     public List<Disk> getRaidDiskIDs(){
+        foreach (Disk disk in this.RaidDiskIDs){
+            System.Console.WriteLine("disk: {0}, capacity: {1}GB",disk.getDiskID(), disk.getCapacity());
+        }
         return this.RaidDiskIDs;
     }
 
     public string getRaidLevel(){
+        System.Console.WriteLine(this.RaidLevel);
         return this.RaidLevel;
     }
 
     public double getRaidHealth(){
+        System.Console.WriteLine("{0}%", this.RaidHealth);
         return this.RaidHealth;
     }
 
     public void setDiskID(int index, string id){
         // see if index exists in List<Disk> RaidDiskIDs
+        if(index < this.RaidDiskIDs.Count){
+            
+        }
         // replace or append to the List<Disk> RaidDiskIDs List at index
         // cout if the action succeeded 
     }
 
-    public void setRaidLevel(String level){
+    public void setRaidLevel(string level){
         // call the DiskConfigurations RAID Level Check function with the String level var
         // If the function returns true then apply to the raid level var and update RaidHealth
+        this.RaidLevel = level;
     }
 
     public void setRaidHealth(double health){
         this.RaidHealth = health;
-        this.getRaidHealth();
+        System.Console.WriteLine("{0}%",this.getRaidHealth());
     }
 
     public void ResetRaidHealth(){
@@ -88,8 +97,9 @@ public class DiskConfiguration{
                     }
                 }
                 this.RaidTotalCapacity = tempsize;
-                System.Console.WriteLine("JBOD Capacity: {0}GB",this.RaidTotalCapacity);
-                
+                System.Console.WriteLine("JBOD Capacity: {0}GB",this.RaidTotalCapacity);  
+            break;
+            case "0":
             break;
         }
         //System.Console.WriteLine(this.getRaidLevel());
