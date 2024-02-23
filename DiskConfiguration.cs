@@ -80,12 +80,13 @@ public class DiskConfiguration{
     }
 
     public void applyRaidConfig(string level){
+        int count = RaidDiskIDs.Count;
+        double tempsize = 0.00;
         // The default fallback if the check fails is a plain jbod
         switch(level){
             case "JBOD":
                 //System.Console.WriteLine("Applaying JBOD Configuration to your Disk array.");
-                int count = RaidDiskIDs.Count;
-                double tempsize = 0.00;
+                
                 //System.Console.WriteLine("Disks in the Array: {0}", count);
                 foreach(Disk tmpdisk in RaidDiskIDs){
                     //System.Console.WriteLine("disk capacity to add: {0}" ,tmpdisk.getCapacity());
@@ -99,7 +100,21 @@ public class DiskConfiguration{
                 this.RaidTotalCapacity = tempsize;
                 System.Console.WriteLine("JBOD Capacity: {0}GB",this.RaidTotalCapacity);  
             break;
+
             case "0":
+                System.Console.WriteLine("Applying RAID 0 Configuration to disk array.");
+
+                //System.Console.WriteLine("Disks in the Array: {0}", count);
+                foreach(Disk tmpdisk in RaidDiskIDs){
+                    tempsize += tmpdisk.getCapacity();
+
+                    if(tmpdisk.getDiskHealth() == true){
+                        this.setRaidHealth(0); // Striping Raid 0 means that the whole array will fail in case of an disk error.
+                        System.Console.WriteLine("RAID 0 Failure on 1 drive fail: " + Math.Pow(1-(1-(100/100)), count)*100 + "%"); // formula to calculate RAIDs Failure probability
+                    }
+                }
+                this.RaidTotalCapacity = tempsize;
+                System.Console.WriteLine("RAID 0 Capacity: {0}GB", this.RaidTotalCapacity);
             break;
         }
         //System.Console.WriteLine(this.getRaidLevel());
