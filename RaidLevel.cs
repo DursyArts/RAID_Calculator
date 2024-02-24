@@ -12,7 +12,7 @@ public class RaidLevel{
     protected string global_raidlevel { get; set; }
     protected int global_minamountdisks{ get; set; }
     protected bool global_isfailed { get; set; } = false;
-    protected List<Disk> raiddisks;
+    protected List<Disk> raiddisks = new List<Disk>();
     
     // debug printing i guess
     public void getConfig(){
@@ -33,6 +33,11 @@ public class RaidLevel{
     }
 
     /* CLASS PUBLIC METHODS DEFINTION */
+    // Init
+    public RaidLevel(string level){
+        this.global_raidlevel = level;
+    }
+
     // Public Getters
     public string getRaidID(){
         return this.global_raidid;
@@ -75,4 +80,12 @@ public class RaidLevel{
         return returnarray;
     }
 
+    public void addDisk(Disk newdisk){
+        try{
+            this.raiddisks.Add(newdisk);
+        }catch(Exception ex){
+            System.Console.WriteLine("Couldn't add Disk to array. Error: " + ex);
+        }
+        System.Console.WriteLine("Added {0} to Raid {1}", newdisk.getID(), this.global_raidid);
+    }
 }

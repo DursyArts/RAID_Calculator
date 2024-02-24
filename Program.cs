@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace RAID_Calculator{
     class Program{
@@ -6,23 +7,24 @@ namespace RAID_Calculator{
             return input_Tb*1024;
         }
         static void Main(string[] args){
-            double capacity1 = TbToGb(2);
-            double capacity2 = TbToGb(4);
+            RaidLevel newArray = new RaidLevel("0");
+            Disk newDisk1 = new Disk();
+            Disk newDisk2 = new Disk();
+            Disk newDisk3 = new Disk();
+            System.Console.WriteLine(newDisk1.getID());
+            System.Console.WriteLine(newDisk2.getID());
+            System.Console.WriteLine(newDisk3.getID());
+            newArray.addDisk(newDisk1);
+            newArray.addDisk(newDisk2);
+            newArray.addDisk(newDisk3);
+
+            DiskConfiguration config = new DiskConfiguration();
+            config.addArray("array1",newArray.getDisks());
             
-            DiskConfiguration diskConfiguration = new DiskConfiguration();
+            Dictionary<string, List<Disk>> TotalArrays = new Dictionary<string, List<Disk>>();
+            TotalArrays = config.getArray("array1");
 
-            System.Console.WriteLine("Creating a Disk~");
-            diskConfiguration.addRaidDisk(capacity1);
-
-            System.Console.WriteLine("Creating another Disk~");
-            diskConfiguration.addRaidDisk(capacity2);
-
-            System.Console.WriteLine("Creating another Disk~");
-            diskConfiguration.addRaidDisk(TbToGb(3));
-
-            System.Console.WriteLine("Getting The Raid Disks~");
-            diskConfiguration.getRaidDiskIDs();
-            diskConfiguration.applyRaidConfig("0");
+            System.Console.WriteLine(TotalArrays.Count);
         }
     }
 }

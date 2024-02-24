@@ -12,9 +12,16 @@ public class Disk {
 
     private double write_speed;
     private double read_speed;
-    private List<Disk> child_disks;
+    private List<Disk> child_disks = new List<Disk>();
     
     /* CLASS PUBLIC METHODS DEFINTION */
+    // Init
+    public Disk(){
+        capacity = 2000.00;
+        ID = "TMPDISK" +  new Random().Next(0, 10000);
+        write_speed = 100;
+        read_speed = 200;
+    }
     // Public Getters
     public double getCapacity(){
         return this.capacity;
@@ -56,8 +63,8 @@ public class Disk {
         this.read_speed = readspeed;
         return this.read_speed;
     }
-    public List<Disk> addDisk(Disk newdisk){
+    // Add a Disk to the List
+    public void addDisk(Disk newdisk){
         this.child_disks.Add(newdisk);
-        return this.child_disks;
     }
 }
