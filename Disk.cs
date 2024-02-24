@@ -22,6 +22,20 @@ public class Disk {
         write_speed = 100;
         read_speed = 200;
     }
+
+    public Disk(double capacity, string diskid, double writespeed, double readspeed){
+        this.capacity = capacity;
+        this.ID = diskid;
+        this.write_speed = writespeed;
+        this.read_speed = readspeed;
+
+        System.Console.WriteLine("Created a disk");
+        System.Console.WriteLine("Disk ID:\t\t{0}", this.ID);
+        System.Console.WriteLine("Disk Capacity:\t\t{0}", this.capacity);
+        System.Console.WriteLine("Disk Write Speed:\t{0}", this.write_speed);
+        System.Console.WriteLine("Disk Read Speed:\t{0}", this.read_speed);
+        System.Console.WriteLine("Disk defect:\t\t{0}",this.isDefect);
+    }
     // Public Getters
     public double getCapacity(){
         return this.capacity;

@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 
 namespace RAID_Calculator;
 
-public class RaidLevel{
+public abstract class RaidLevel{
     protected string global_raidid { get; set; }
     protected double global_totalcapacity { get; set; }
     protected double global_unusablecapacity { get; set;}
