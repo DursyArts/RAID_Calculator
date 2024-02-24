@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace RAID_Calculator;
 
@@ -7,37 +9,55 @@ public class Disk {
     private double capacity;
     private string ID = "TEMPDISK";
     private bool isDefect = false;
+
+    private double write_speed;
+    private double read_speed;
+    private List<Disk> child_disks;
     
     /* CLASS PUBLIC METHODS DEFINTION */
+    // Public Getters
     public double getCapacity(){
         return this.capacity;
     }
-
-    public string getDiskID(){
+    public string getID(){
         return this.ID;
     }
-
-    public bool getDiskHealth(){
+    public bool getDefect(){
         return this.isDefect;
     }
+    public double getWriteSpeed(){
+        return this.write_speed;
+    }
+    public double getReadSpeed(){
+        return this.read_speed;
+    }
+    public List<Disk> getChildDisks(){
+        return this.child_disks;
+    }
 
-    public void setCapacity(double amount){
-        //System.Console.WriteLine("Setting Capacity of disk ID {0} to: {1}", this.ID, amount);
+    // Public Setters
+    public double setCapacity(double amount){
         this.capacity = amount;
-        System.Console.WriteLine(this.getCapacity() + "GB");
+        return this.capacity;
     }
-
-    public void setID(string id){
-        this.ID = id;
-        System.Console.WriteLine(this.getDiskID());
+    public string setID(string new_id){
+        this.ID = new_id;
+        return this.ID;
     }
-
-    public void setHealth(bool defect){
-        if(this.isDefect&&defect){
-            System.Console.WriteLine("Disk already defect");
-        }else{
-            this.isDefect = true;
-        }
-        this.getDiskHealth();
+    public bool setDefect(bool defect){
+        this.isDefect = defect;
+        return this.isDefect;
+    }
+    public double setWriteSpeed(double writespeed){
+        this.write_speed = writespeed;
+        return this.write_speed;
+    }
+    public double setReadSpeed(double readspeed){
+        this.read_speed = readspeed;
+        return this.read_speed;
+    }
+    public List<Disk> addDisk(Disk newdisk){
+        this.child_disks.Add(newdisk);
+        return this.child_disks;
     }
 }

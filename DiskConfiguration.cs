@@ -18,7 +18,7 @@ public class DiskConfiguration{
 
     public List<Disk> getRaidDiskIDs(){
         foreach (Disk disk in this.RaidDiskIDs){
-            System.Console.WriteLine("disk: {0}, capacity: {1}GB",disk.getDiskID(), disk.getCapacity());
+            System.Console.WriteLine("disk: {0}, capacity: {1}GB",disk.getID(), disk.getCapacity());
         }
         return this.RaidDiskIDs;
     }
@@ -82,6 +82,7 @@ public class DiskConfiguration{
     public void applyRaidConfig(string level){
         int count = RaidDiskIDs.Count;
         double tempsize = 0.00;
+        
         // The default fallback if the check fails is a plain jbod
         switch(level){
             case "JBOD":
@@ -93,7 +94,9 @@ public class DiskConfiguration{
                     tempsize = tempsize + tmpdisk.getCapacity();
                     
                     //System.Console.WriteLine("Total Size now: {0}", tempsize);
-                    if(tmpdisk.getDiskHealth() == true){
+
+                    // Calculate Health
+                    if(tmpdisk.getDefect() == true){
                         this.setRaidHealth(100.00); 
                     }
                 }
@@ -108,7 +111,8 @@ public class DiskConfiguration{
                 foreach(Disk tmpdisk in RaidDiskIDs){
                     tempsize += tmpdisk.getCapacity();
 
-                    if(tmpdisk.getDiskHealth() == true){
+                    // Calculate Health
+                    if(tmpdisk.getDefect() == true){
                         this.setRaidHealth(0); // Striping Raid 0 means that the whole array will fail in case of an disk error.
                         System.Console.WriteLine("RAID 0 Failure on 1 drive fail: " + Math.Pow(1-(1-(100/100)), count)*100 + "%"); // formula to calculate RAIDs Failure probability
                     }
